@@ -21,6 +21,32 @@ class _FilterScreenState extends State<FilterScreen> {
     'Given',
   ];
 
+  // Switch Case for Content
+  String displayText(int selcted) {
+    switch (selcted) {
+      case 0:
+        return '${listIteams[selectedIndex]} Categories';
+      case 1:
+        return '${listIteams[selectedIndex]} Category';
+      case 2:
+        return '${listIteams[selectedIndex]} Category';
+      case 3:
+        return '${listIteams[selectedIndex]} Category';
+      case 4:
+        return '${listIteams[selectedIndex]} Category';
+      case 5:
+        return '${listIteams[selectedIndex]} Category';
+      case 6:
+        return '${listIteams[selectedIndex]} Category';
+      case 7:
+        return '${listIteams[selectedIndex]} Category';
+      case 8:
+        return '${listIteams[selectedIndex]} Category';
+      default:
+        return '';
+    }
+  }
+
   void onButtonPressed(int index) {
     setState(() {
       selectedIndex = index;
@@ -52,15 +78,24 @@ class _FilterScreenState extends State<FilterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              for (int i = 0; i < listIteams.length; i++)
-                buildButton(i, listIteams[i]),
-            ],
-          ),
+        child: Column(
+          children: [
+            SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  for (int i = 0; i < listIteams.length; i++)
+                    buildButton(i, listIteams[i]),
+                ],
+              ),
+            ),
+            Text(
+              displayText(selectedIndex),
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Colors.black, fontSize: 20),
+            )
+          ],
         ),
       ),
     );
